@@ -15,8 +15,7 @@ interface PropertyHeroProps {
 
 export function PropertyHero({ property, className = "" }: PropertyHeroProps) {
   const [showLightbox, setShowLightbox] = useState(false);
-  const images = property.images.map((img) => img.src);
-  const totalImages = images.length;
+  const totalImages = property.images.length;
 
   return (
     <div className={className}>
@@ -80,7 +79,7 @@ export function PropertyHero({ property, className = "" }: PropertyHeroProps) {
         {/* Large Image */}
         <div className="col-span-2 row-span-2 relative group cursor-pointer" onClick={() => setShowLightbox(true)}>
           <Image
-            src={images[0]}
+            src={property.images[0].src}
             alt={property.images[0].alt}
             fill
             className="object-cover group-hover:opacity-95 transition-opacity"
@@ -90,15 +89,15 @@ export function PropertyHero({ property, className = "" }: PropertyHeroProps) {
         </div>
 
         {/* Small Images */}
-        {images.slice(1, 5).map((src, index) => (
+        {property.images.slice(1, 5).map((img, index) => (
           <div
             key={index}
             className="relative group cursor-pointer"
             onClick={() => setShowLightbox(true)}
           >
             <Image
-              src={src}
-              alt={property.images[index + 1]?.alt || `Property image ${index + 2}`}
+              src={img.src}
+              alt={img.alt}
               fill
               className="object-cover group-hover:opacity-95 transition-opacity"
               sizes="(max-width: 768px) 100vw, 25vw"
@@ -120,7 +119,7 @@ export function PropertyHero({ property, className = "" }: PropertyHeroProps) {
 
       {/* Image Carousel - Mobile */}
       <div className="md:hidden aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <ImageCarousel images={images} alt={property.name} showCounter />
+        <ImageCarousel images={property.images} />
       </div>
 
       {/* Quick Stats */}
@@ -187,8 +186,8 @@ export function PropertyHero({ property, className = "" }: PropertyHeroProps) {
           </button>
           <div className="max-w-5xl w-full aspect-video relative">
             <Image
-              src={images[0]}
-              alt={property.name}
+              src={property.images[0].src}
+              alt={property.images[0].alt}
               fill
               className="object-contain"
               sizes="100vw"
