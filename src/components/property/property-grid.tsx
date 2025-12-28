@@ -1,3 +1,5 @@
+"use client";
+
 import { PropertyCard as PropertyCardType } from "@/types/property";
 import { PropertyCard } from "./property-card";
 import { Button } from "@/components/ui/button";
