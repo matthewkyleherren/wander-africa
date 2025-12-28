@@ -1,4 +1,5 @@
-import { Property, GuestCount } from "./property";
+import { Property } from "./property";
+import { GuestCount } from "./search";
 
 /**
  * Booking request payload
@@ -10,16 +11,6 @@ export interface BookingRequest {
   guests: GuestCount;
   specialRequests?: string;
   addOns?: BookingAddOn[];
-}
-
-/**
- * Guest count for bookings
- */
-export interface GuestCount {
-  adults: number;
-  children: number;
-  infants: number;
-  pets: number;
 }
 
 /**
