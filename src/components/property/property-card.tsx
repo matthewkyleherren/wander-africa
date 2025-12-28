@@ -21,6 +21,12 @@ export function PropertyCard({ property, className = "" }: PropertyCardProps) {
 
   const primaryBadge = property.badges[0];
 
+  // Map string array to ImageCarousel format
+  const carouselImages = property.images.map((src, index) => ({
+    src,
+    alt: `${property.name} - Image ${index + 1}`,
+  }));
+
   return (
     <Link
       href={`/property/${property.slug}`}
@@ -28,7 +34,7 @@ export function PropertyCard({ property, className = "" }: PropertyCardProps) {
     >
       {/* Image Carousel */}
       <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-background-secondary mb-3">
-        <ImageCarousel images={property.images} alt={property.name} />
+        <ImageCarousel images={carouselImages} />
 
         {/* Wishlist Button */}
         <button
