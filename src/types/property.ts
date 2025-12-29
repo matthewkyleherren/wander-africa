@@ -11,12 +11,14 @@ export interface Property {
   pricing: PropertyPricing;
   capacity: PropertyCapacity;
   amenities: Amenity[];
+  highlightAmenities?: string[];
   images: PropertyImage[];
   bedrooms: Bedroom[];
   reviews: ReviewSummary;
   policies: PropertyPolicies;
   badges: PropertyBadge[];
   status: "active" | "inactive" | "coming_soon";
+  availability?: DateAvailability[];
   createdAt: string;
   updatedAt: string;
 }
@@ -62,6 +64,8 @@ export interface PropertyLocation {
   timezone: string;
   nearbyAttractions: Attraction[];
   nearbyRestaurants: Restaurant[];
+  localServices?: LocalService[];
+  parkingSpaces?: number;
 }
 
 /**
@@ -278,10 +282,12 @@ export interface Restaurant {
   id: string;
   name: string;
   cuisine: string;
+  description: string;
   distance: string;
   priceLevel: 1 | 2 | 3 | 4;
   rating?: number;
   image?: string;
+  url?: string;
 }
 
 /**
@@ -292,4 +298,17 @@ export interface DateAvailability {
   available: boolean;
   price?: number;
   minimumNights?: number;
+}
+
+/**
+ * Local service (grocery, retail, etc.)
+ */
+export interface LocalService {
+  id: string;
+  name: string;
+  type: "grocery" | "retail" | "pharmacy" | "gas" | "other";
+  description: string;
+  distance: string;
+  image?: string;
+  url?: string;
 }

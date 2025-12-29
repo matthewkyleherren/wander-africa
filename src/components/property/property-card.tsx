@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Heart, Star } from "lucide-react";
 import { PropertyCard as PropertyCardType } from "@/types/property";

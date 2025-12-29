@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Navbar, Footer, MobileNav } from "@/components/layout";
 import { Hero, CategoryTabs, ValueProposition } from "@/components/home";
 import { PropertyGrid } from "@/components/property";
@@ -8,7 +9,9 @@ export default function HomePage() {
     <div className="min-h-screen">
       <Navbar variant="transparent" />
       <Hero />
-      <CategoryTabs categories={propertyCategories} />
+      <Suspense fallback={<div className="h-16" />}>
+        <CategoryTabs categories={propertyCategories} />
+      </Suspense>
 
       <section className="section">
         <div className="container-wide">

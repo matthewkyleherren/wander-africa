@@ -59,15 +59,12 @@ export function PropertyReviews({
       {/* Rating Breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-8">
         {Object.entries(reviews.categoryAverages).map(([key, value]) => (
-          <div key={key} className="flex items-center gap-4">
-            <span className="text-sm text-foreground min-w-[120px]">
-              {categoryLabels[key as keyof typeof categoryLabels]}
-            </span>
-            <RatingBar rating={value} max={5} className="flex-1" />
-            <span className="text-sm font-medium text-foreground min-w-[32px] text-right">
-              {value.toFixed(1)}
-            </span>
-          </div>
+          <RatingBar
+            key={key}
+            label={categoryLabels[key as keyof typeof categoryLabels]}
+            value={value}
+            max={5}
+          />
         ))}
       </div>
 
@@ -121,7 +118,7 @@ function ReviewCard({ review }: { review: Review }) {
 
       {/* Rating and Date */}
       <div className="flex items-center gap-2 text-sm">
-        <Rating rating={review.rating} size="sm" />
+        <Rating value={review.rating} size="sm" />
         <span className="text-foreground-muted">·</span>
         <span className="text-foreground-muted">
           {new Date(review.date).toLocaleDateString("en-US", {

@@ -6,12 +6,16 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
   display: "swap",
+  fallback: ["system-ui", "arial", "sans-serif"],
+  preload: true,
 });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
+  fallback: ["Georgia", "serif"],
+  preload: true,
 });
 
 export const metadata: Metadata = {
